@@ -1,0 +1,148 @@
+html = r'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10111a">
+<title>shamrock games</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0c12;--panel:#141620;--panel2:#1a1d2a;--text:#f4f5fb;--muted:#a5a9bb;--accent:#8b5cf6;--accent2:#22d3ee;--line:#292c3b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#19152e 0,#0b0c12 46%);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+button,input{font:inherit}button{cursor:pointer}.topbar{position:sticky;top:0;z-index:10;background:#0b0c12eF;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{max-width:1400px;margin:auto;padding:14px 22px;display:flex;align-items:center;gap:16px}.brand{display:flex;align-items:center;gap:11px;color:var(--text);text-decoration:none;font-weight:850;font-size:19px;white-space:nowrap}.brand-icon{display:grid;place-items:center;width:39px;height:39px;border-radius:13px;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 5px 25px #8b5cf633;font-size:21px}.search-wrap{flex:1;position:relative;max-width:650px;margin:0 auto}.search-wrap span{position:absolute;left:14px;top:10px;color:var(--muted)}#search{width:100%;padding:11px 15px 11px 42px;background:var(--panel);border:1px solid var(--line);border-radius:12px;color:var(--text);outline:none}#search:focus{border-color:var(--accent)}.nav-btn,.primary,.ghost{border:1px solid var(--line);border-radius:11px;padding:10px 13px;color:var(--text);background:var(--panel2);font-weight:700}.primary{background:linear-gradient(135deg,#7c3aed,#5b5ce2);border:0}.nav-btn:hover,.ghost:hover{border-color:#6b62a7}.layout{max-width:1400px;margin:auto;padding:26px 22px 50px}.hero{display:flex;justify-content:space-between;align-items:center;gap:22px;padding:28px;border:1px solid #36304f;border-radius:22px;background:linear-gradient(115deg,#20183b,#151827 64%,#10212b);margin-bottom:24px;overflow:hidden}.eyebrow{color:#c4b5fd;text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:900}.hero h1{font-size:clamp(27px,4vw,43px);letter-spacing:-.04em;line-height:1.1;margin:8px 0}.hero p{color:var(--muted);max-width:580px;margin:0}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.hero-art{font-size:clamp(60px,10vw,105px);filter:drop-shadow(0 8px 25px #8b5cf644);padding:0 20px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:26px 0 13px}.section-head h2{font-size:18px;margin:0;letter-spacing:-.02em}.count{color:var(--muted);font-size:13px}.filters{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:thin}.filter{border:1px solid var(--line);background:#11131c;color:var(--muted);border-radius:999px;padding:8px 14px;white-space:nowrap}.filter.active{background:#302052;border-color:#7655bc;color:#fff}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:13px}.card{position:relative;min-width:0;background:linear-gradient(145deg,#191b28,#11131b);border:1px solid var(--line);border-radius:16px;padding:10px;text-align:left;color:var(--text);transition:transform .16s,border-color .16s,background .16s;overflow:hidden}.card:hover{transform:translateY(-3px);border-color:#65539a;background:#1b1c2b}.thumb{height:112px;border-radius:11px;display:grid;place-items:center;font-size:42px;margin-bottom:10px;background:linear-gradient(135deg,var(--c1,#3b2a69),var(--c2,#172f45));position:relative;overflow:hidden}.thumb:before,.thumb:after{content:"";position:absolute;border:1px solid #ffffff24;border-radius:50%;width:100px;height:100px;transform:translate(45px,-35px)}.thumb:after{width:65px;height:65px;transform:translate(-45px,35px)}.thumb span{z-index:1;filter:drop-shadow(0 5px 8px #0005)}.game-title{font-weight:750;font-size:13px;line-height:1.35;display:block;padding:0 2px 3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.game-category{font-size:11px;color:var(--muted);padding:0 2px}.fav{position:absolute;right:15px;top:15px;border:1px solid #ffffff20;background:#0b0c12b8;border-radius:9px;width:30px;height:30px;color:#fff;font-size:16px;z-index:2}.fav.on{color:#fb7185}.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:45px 12px;border:1px dashed var(--line);border-radius:16px}.footer{border-top:1px solid var(--line);margin-top:38px;padding-top:20px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.modal{position:fixed;inset:0;background:#05060bdc;z-index:30;display:none;align-items:center;justify-content:center;padding:18px}.modal.open{display:flex}.player{width:min(1200px,100%);height:min(800px,92vh);background:#10121b;border:1px solid #35384a;border-radius:17px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 25px 100px #0009}.player-head{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line)}.player-head strong{margin-right:auto}.player-head button{padding:7px 10px}.player iframe{border:0;background:#080910;flex:1;width:100%;min-height:0}.player-note{font-size:12px;color:var(--muted);padding:8px 13px;border-top:1px solid var(--line)}.notice{color:var(--muted);font-size:12px;margin-top:14px}
+@media(max-width:650px){.nav{padding:11px 13px;gap:9px;flex-wrap:wrap}.brand{font-size:16px}.brand-icon{width:34px;height:34px}.search-wrap{order:3;flex-basis:100%;max-width:none}.nav-btn{padding:8px 10px}.layout{padding:17px 13px 35px}.hero{padding:20px}.hero-art{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.thumb{height:100px}.card{padding:8px}.section-head{margin-top:22px}}
+</style>
+</head>
+<body>
+<header class="topbar"><nav class="nav">
+<a class="brand" href="#" aria-label="BrooksByers Games home"><span class="brand-icon">🎮</span><span>BrooksByers Games</span></a>
+<div class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="Search games..." aria-label="Search games"></div>
+<button class="nav-btn" id="randomBtn">🎲 Random</button>
+</nav></header>
+<main class="layout">
+<section class="hero"><div><div class="eyebrow">Your next favorite game</div><h1>Play something fun.</h1><p>Browse the collection, search for a game, and save your favorites for next time.</p><div class="hero-actions"><button class="primary" id="browseBtn">🕹️ Browse games</button><button class="ghost" id="suggestBtn">💬 Suggest a game</button></div></div><div class="hero-art" aria-hidden="true">🕹️</div></section>
+<div class="section-head"><h2>Quick filters</h2><span class="count" id="resultCount"></span></div>
+<div class="filters" id="filters">
+<button class="filter active" data-category="All">All games</button><button class="filter" data-category="Racing">🏎️ Racing</button><button class="filter" data-category="Platformer">🏃 Platformer</button><button class="filter" data-category="Puzzle">🧩 Puzzle</button><button class="filter" data-category="Sports">🏀 Sports</button><button class="filter" data-category="Arcade">👾 Arcade</button><button class="filter" data-category="Favorites">❤️ Favorites</button><button class="filter" data-category="Recent">🕘 Recently played</button>
+</div>
+<div class="section-head" id="games-heading"><h2 id="gridTitle">All games</h2><span class="count">Choose a card to play</span></div>
+<section class="grid" id="gameGrid" aria-label="Games"></section>
+<div class="notice">Some games may block embedding or be unavailable. If a game does not load here, use “Open game” in the player window.</div>
+<footer class="footer"><span>© <span id="year"></span> BrooksByers Games</span><span>Unofficial game links may be hosted by third parties.</span><button class="ghost" id="reportBtn">Report a problem</button></footer>
+</main>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Game player">
+<div class="player"><div class="player-head"><strong id="playerTitle">Game</strong><button class="ghost" id="openExternal">↗ Open game</button><button class="ghost" id="fullscreenBtn">⛶ Fullscreen</button><button class="ghost" id="closeBtn" aria-label="Close game">✕ Close</button></div><iframe id="gameFrame" title="Game window" allow="fullscreen; autoplay; gamepad; clipboard-read; clipboard-write" referrerpolicy="no-referrer" loading="lazy"></iframe><div class="player-note">If the game is blank, the host may not allow embeds. Try “Open game” above.</div></div>
+</div>
+<script>
+"use strict";
+const games = [
+{name:"Speed Stars",category:"Sports",emoji:"🏃",url:"https://speed-stars.github.io/"},
+{name:"Cars Merge",category:"Racing",emoji:"🚗",url:"https://carsmerge.github.io/"},
+{name:"Stickman Bike",category:"Racing",emoji:"🚴",url:"https://fridaynight-funkin.github.io/"},
+{name:"Moto Road Rash 3D",category:"Racing",emoji:"🏍️",url:"https://htmlxm.github.io/"},
+{name:"The Impossible Quiz",category:"Puzzle",emoji:"❓",url:"https://gswitch3.github.io/"},
+{name:"Slope",category:"Arcade",emoji:"🔺",url:"https://slope-game.github.io/"},
+{name:"Tunnel Rush",category:"Arcade",emoji:"🌀",url:"https://htmlxm.github.io/"},
+{name:"8 Ball Pool",category:"Sports",emoji:"🎱",url:"https://ubg42.github.io/"},
+{name:"Flappy Bird",category:"Arcade",emoji:"🐦",url:"https://flappybird.io/"},
+{name:"Snow Rider 3D",category:"Racing",emoji:"🛷",url:"https://snowrider-3dgame.github.io/"},
+{name:"Subway Surfers",category:"Arcade",emoji:"🚇",url:"https://subwaysurfers.github.io/"},
+{name:"Paper.io 2",category:"Arcade",emoji:"🟦",url:"https://paper-io.com/"},
+{name:"Stickman Hook",category:"Platformer",emoji:"🪝",url:"https://htmlxm.github.io/"},
+{name:"OvO",category:"Platformer",emoji:"⚪",url:"https://ovo-classic.github.io/"},
+{name:"Run 3",category:"Platformer",emoji:"🏃",url:"https://run3.io/"},
+{name:"Tomb Of The Mask",category:"Arcade",emoji:"🟨",url:"https://htmlxm.github.io/"},
+{name:"Moto X3M",category:"Racing",emoji:"🏍️",url:"https://motox3m-free.github.io/"},
+{name:"Elastic Man",category:"Arcade",emoji:"🙂",url:"https://23azostore.github.io/"},
+{name:"Eggy Car",category:"Racing",emoji:"🥚",url:"https://eggy-car.github.io/"},
+{name:"Cookie Clicker",category:"Arcade",emoji:"🍪",url:"https://orteil.dashnet.org/cookieclicker/"},
+{name:"Shell Jump",category:"Platformer",emoji:"🐚",url:"https://tataedu23.github.io/"},
+{name:"Ragdoll Archers",category:"Arcade",emoji:"🏹",url:"https://ragdollarchers.io/"},
+{name:"Getting Over It",category:"Platformer",emoji:"⛰️",url:"https://goflogames.github.io/"},
+{name:"Bloxorz",category:"Puzzle",emoji:"🧊",url:"https://bloxorz.io/"},
+{name:"Snail Bob",category:"Puzzle",emoji:"🐌",url:"https://snailbob.io/"},
+{name:"Drive Mad",category:"Racing",emoji:"🚙",url:"https://roblox-unblock.github.io/"},
+{name:"Temple Run 2",category:"Arcade",emoji:"🏃",url:"https://templerun2.io/"},
+{name:"Block Blast",category:"Puzzle",emoji:"🧱",url:"https://blockblast.io/"},
+{name:"Red Ball 4",category:"Platformer",emoji:"🔴",url:"https://redball4.com/"},
+{name:"Tiny Fishing",category:"Arcade",emoji:"🎣",url:"https://htmlxm.github.io/"},
+{name:"Gold Digger FRVR",category:"Arcade",emoji:"⛏️",url:"https://htmlxm.github.io/"},
+{name:"Raft Wars",category:"Arcade",emoji:"🛶",url:"https://ubg42.github.io/"},
+{name:"Master Chess",category:"Puzzle",emoji:"♟️",url:"https://abinbins.github.io/"},
+{name:"Geometry Dash",category:"Platformer",emoji:"🟪",url:"https://geometrydashlite.io/"},
+{name:"Basketball Stars",category:"Sports",emoji:"🏀",url:"https://ubg42.github.io/"},
+{name:"Drift Hunters",category:"Racing",emoji:"🏎️",url:"https://htmlxm.github.io/"},
+{name:"Paper Minecraft",category:"Arcade",emoji:"⛏️",url:"https://ubg42.github.io/"},
+{name:"Cluster Rush",category:"Platformer",emoji:"🚚",url:"https://goflogames.github.io/"},
+{name:"Drift Boss",category:"Racing",emoji:"🏁",url:"https://drift-boss.com/"},
+{name:"Moto X3M Pool Party",category:"Racing",emoji:"🌴",url:"https://htmlxm.github.io/"},
+{name:"Friday Night Funkin'",category:"Arcade",emoji:"🎤",url:"https://fridaynightfunkin.github.io/"},
+{name:"Crossy Road",category:"Arcade",emoji:"🐔",url:"https://crossyroad.io/"},
+{name:"Wheelie Bike",category:"Racing",emoji:"🚲",url:"https://htmlxm.github.io/"},
+{name:"Angry Birds",category:"Puzzle",emoji:"🐤",url:"https://angrybirds.com/"},
+{name:"Tetris",category:"Puzzle",emoji:"🧩",url:"https://tetris.com/play-tetris"},
+{name:"Monkey Mart",category:"Arcade",emoji:"🐒",url:"https://monkeymartgame.com/"},
+{name:"2048",category:"Puzzle",emoji:"🔢",url:"https://play2048.co/"},
+{name:"Plants Vs Zombies",category:"Strategy",emoji:"🌻",url:"https://ubg42.github.io/"},
+{name:"1v1.lol",category:"Sports",emoji:"🎯",url:"https://1v1.lol/"},
+{name:"Space Waves",category:"Arcade",emoji:"🚀",url:"https://spacewaves.io/"},
+{name:"Retro Bowl",category:"Sports",emoji:"🏈",url:"https://retrobowl.me/"},
+{name:"Escape Road",category:"Racing",emoji:"🚓",url:"https://ubg42.github.io/"},
+{name:"Solar Smash",category:"Arcade",emoji:"🌎",url:"https://ubg42.github.io/"}
+];
+const grid=document.getElementById("gameGrid"), search=document.getElementById("search"), resultCount=document.getElementById("resultCount");
+let activeCategory="All", query="", currentGame=null;
+function readStore(key){try{return JSON.parse(localStorage.getItem(key)||"[]")}catch{return []}}
+function writeStore(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch{}}
+function getShownGames(){
+ let list=games.filter(g=>g.name.toLowerCase().includes(query));
+ if(activeCategory==="Favorites"){const fav=readStore("bbg-favorites");list=list.filter(g=>fav.includes(g.name))}
+ else if(activeCategory==="Recent"){const recent=readStore("bbg-recent");list=list.filter(g=>recent.includes(g.name)).sort((a,b)=>recent.indexOf(a.name)-recent.indexOf(b.name))}
+ else if(activeCategory!=="All")list=list.filter(g=>g.category===activeCategory);
+ return list;
+}
+function render(){
+ const list=getShownGames();grid.textContent="";resultCount.textContent=list.length+" game"+(list.length===1?"":"s");
+ document.getElementById("gridTitle").textContent=activeCategory==="All"?"All games":activeCategory==="Favorites"?"Your favorites":activeCategory==="Recent"?"Recently played":activeCategory+" games";
+ if(!list.length){const empty=document.createElement("div");empty.className="empty";empty.textContent=activeCategory==="Favorites"?"No favorites yet. Tap the ♥ on a game card to save one.":"No games found. Try another search.";grid.append(empty);return}
+ const favs=readStore("bbg-favorites");
+ list.forEach((g,i)=>{
+  const card=document.createElement("article");card.className="card";
+  const play=document.createElement("button");play.className="card";play.style.cssText="display:block;width:100%;padding:0;border:0;background:none;text-align:left;color:inherit";play.setAttribute("aria-label","Play "+g.name);
+  const thumb=document.createElement("div");thumb.className="thumb";thumb.style.setProperty("--c1",["#39245f","#143c50","#4c2d2d","#244c3c"][i%4]);thumb.style.setProperty("--c2",["#1b294b","#31224b","#1a263c","#442b52"][i%4]);
+  const emoji=document.createElement("span");emoji.textContent=g.emoji;thumb.append(emoji);
+  const title=document.createElement("span");title.className="game-title";title.textContent=g.name;
+  const cat=document.createElement("span");cat.className="game-category";cat.textContent=g.category;
+  play.append(thumb,title,cat);play.addEventListener("click",()=>openGame(g));
+  const fav=document.createElement("button");fav.className="fav"+(favs.includes(g.name)?" on":"");fav.textContent=favs.includes(g.name)?"♥":"♡";fav.setAttribute("aria-label",(favs.includes(g.name)?"Remove ":"Add ")+g.name+" "+(favs.includes(g.name)?"from":"to")+" favorites");
+  fav.addEventListener("click",e=>{e.stopPropagation();const next=readStore("bbg-favorites");const idx=next.indexOf(g.name);if(idx>=0)next.splice(idx,1);else next.push(g.name);writeStore("bbg-favorites",next);render()});
+  card.append(fav,play);grid.append(card);
+ });
+}
+function openGame(game){
+ currentGame=game;document.getElementById("playerTitle").textContent=game.name;
+ document.getElementById("gameFrame").src=game.url;
+ document.getElementById("openExternal").onclick=()=>window.open(game.url,"_blank","noopener,noreferrer");
+ document.getElementById("modal").classList.add("open");document.body.style.overflow="hidden";
+ const recent=readStore("bbg-recent").filter(n=>n!==game.name);recent.unshift(game.name);writeStore("bbg-recent",recent.slice(0,8));
+}
+function closeGame(){document.getElementById("modal").classList.remove("open");document.getElementById("gameFrame").src="about:blank";document.body.style.overflow="";currentGame=null}
+search.addEventListener("input",()=>{query=search.value.trim().toLowerCase();render()});
+document.querySelectorAll(".filter").forEach(btn=>btn.addEventListener("click",()=>{activeCategory=btn.dataset.category;document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b===btn));render()}));
+document.getElementById("randomBtn").addEventListener("click",()=>{const list=getShownGames();if(list.length)openGame(list[Math.floor(Math.random()*list.length)]);else{activeCategory="All";query="";search.value="";document.querySelector('[data-category="All"]').click();}});
+document.getElementById("browseBtn").addEventListener("click",()=>document.getElementById("games-heading").scrollIntoView({behavior:"smooth"}));
+document.getElementById("suggestBtn").addEventListener("click",()=>window.location.href="mailto:weathersphereoffcial@gmail.com?subject=BrooksByers%20Games%20Suggestion");
+document.getElementById("reportBtn").addEventListener("click",()=>window.location.href="mailto:weathersphereoffcial@gmail.com?subject=BrooksByers%20Games%20Problem");
+document.getElementById("closeBtn").addEventListener("click",closeGame);
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeGame()});
+document.getElementById("fullscreenBtn").addEventListener("click",async()=>{const frame=document.getElementById("gameFrame");try{if(frame.requestFullscreen)await frame.requestFullscreen();else alert("Fullscreen is not supported by this browser.")}catch{alert("Fullscreen could not be started. Try the browser's fullscreen option.")}});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeGame();if(e.key==="/"&&document.activeElement!==search){e.preventDefault();search.focus()}});
+document.getElementById("year").textContent=new Date().getFullYear();
+render();
+</script>
+</body>
+</html>'''
+path = "/mnt/data/index.html"
+with open(path, "w", encoding="utf-8") as f:
+    f.write(html)
+print(f"Created {path} ({len(html):,} characters). Single-file HTML with responsive layout, search, categories, favorites, recent games, random play, and game modal.")
